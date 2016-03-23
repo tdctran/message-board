@@ -12,18 +12,5 @@
   </div>
 </div>
 
-<div class="form-horizontal" role="form">
-<%= form_for(@message) do |f| %>
-<div class="form-group">
-  名前:
-  <%= f.text_area :name, :size => "10x1"  %>
-</div>
-<div class="form-group">
-  内容:
-  <%= f.text_area :body, :size => "10x1" %>
-  </div>
-  <div class="form-group">
-  <%= f.submit class: "btn btn-sm btn-primary" %>
-  </div>
-<% end %>
-</div>
+<% #部分テンプレートを読み込んでいる %>
+<%= render 'form' %>
