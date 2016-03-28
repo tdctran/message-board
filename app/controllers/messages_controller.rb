@@ -20,6 +20,21 @@ class MessagesController < ApplicationController
     @messages = Message.all
   end
 
+  def destroy
+    @message.destroy
+    redirect_to root_path, notice: 'メッセージを削除しました'
+  end
+
+
+  def message_params
+    params.require(:message).permit(:name, :body, :age)
+  end
+  
+   def set_message
+    @message = Message.find(params[:id])
+   end
+
+
  def create
     @message = Message.new(message_params)
     if @message.save
@@ -32,20 +47,4 @@ class MessagesController < ApplicationController
     end
   end
 
-  def destroy
-    @message.destroy
-    redirect_to root_path, notice: 'メッセージを削除しました'
-  end
-
-
-  private
-  def message_params
-    params.require(:message).permit(:name, :body)
-  end
-  
-   def set_message
-    @message = Message.find(params[:id])
-   end
-  
 end
-  ## ここまで
